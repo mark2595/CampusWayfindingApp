@@ -1,0 +1,41 @@
+
+{
+    "type": "FeatureCollection",
+    "generator": "JOSM",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "building": "university",
+                "name": "Q Building"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            143.88922360000,
+                            -37.62503520000
+                        ],
+                        [
+                            143.88924240000,
+                            -37.62478020000
+                        ],
+                        [
+                            143.88967960000,
+                            -37.62480360000
+                        ],
+                        [
+                            143.88966080000,
+                            -37.62506700000
+                        ],
+                        [
+                            143.88922360000,
+                            -37.62503520000
+                        ]
+                    ]
+                ]
+            }
+        }
+    ]
+}
