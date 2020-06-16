@@ -57,7 +57,8 @@ const getPositionErrorMessage = code => {
 
 //Called by Google Maps API
 function init() {
-  const initialPosition = { lat: 59.32, lng: 17.84 };
+  //const initialPosition = { lat: 59.32, lng: 17.84 }; // that Defaults to Sweden
+  const initialPosition = { lat: -37.6298, lng: 143.8835 }; // Set intPos to Mt Helen
   const map = createMap(initialPosition);
   const marker = createMarker({ map, position: initialPosition });
   const $info = document.getElementById('info');
@@ -65,7 +66,7 @@ function init() {
   let watchId = trackLocation({
     onSuccess: ({ coords: { latitude: lat, longitude: lng } }) => {
       marker.setPosition({ lat, lng });
-      map.panTo({ lat, lng });
+      //map.panTo({ lat, lng }); // turns off the Jumping to part for users that are not actually at Mt Helen.  
       $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
       $info.classList.remove('error');
     },
