@@ -1,0 +1,140 @@
+"C:\Users\malbanese\OneDrive - Federation University Australia\Documents\GitHub\CampusWayfindingApp"
+
+npm install -g cordova
+
+cordova create cwa au.edu.federation CampusWayfindingApp
+
+ cordova platform add ios
+$ cordova platform add android
+
+https://cordova.apache.org/docs/en/latest/guide/cli/
+
+https://github.com/apache/cordova-android/issues/845#issuecomment-575944341
+
+
+'ANDROID_HOME' environment variable is set to non-existent path: C:\android-sdk-windows;
+Try update it manually to point to valid SDK directory.
+
+
+C:\android-sdk-windows\platform-tools
+C:\android-sdk-windows\tools
+
+
+https://stackoverflow.com/questions/171588/is-there-a-command-to-refresh-environment-variables-from-the-command-prompt-in-w
+cordova requirements
+
+Requirements check results for android:
+Java JDK: installed 1.8.0
+Android SDK: installed true
+Android target: installed android-29,android-28
+Gradle: installed C:\Gradle\bin\gradle
+
+Requirements check results for ios:
+Apple macOS: not installed
+Cordova tooling for iOS requires Apple macOS
+Some of requirements check failed
+
+C:\Users\malbanese\OneDrive - Federation University Australia\Documents\GitHub\CampusWayfindingApp\cwa>cordova build
+Checking Java JDK and Android SDK versions
+ANDROID_SDK_ROOT=undefined (recommended setting)
+ANDROID_HOME=C:\android-sdk-windows (DEPRECATED)
+
+Welcome to Gradle 6.1!
+
+Here are the highlights of this release:
+ - Dependency cache is relocatable
+ - Configurable compilation order between Groovy, Java & Scala
+ - New sample projects in Gradle's documentation
+
+For more details see https://docs.gradle.org/6.1/release-notes.html
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+
+BUILD SUCCESSFUL in 14s
+1 actionable task: 1 executed
+Subproject Path: CordovaLib
+Subproject Path: app
+Downloading https://services.gradle.org/distributions/gradle-4.10.3-all.zip
+...........10%...........20%...........30%...........40%............50%...........60%...........70%...........80%...........90%............100%
+
+Welcome to Gradle 4.10.3!
+
+Here are the highlights of this release:
+ - Incremental Java compilation by default
+ - Periodic Gradle caches cleanup
+ - Gradle Kotlin DSL 1.0-RC6
+ - Nested included builds
+ - SNAPSHOT plugin versions in the `plugins {}` block
+
+For more details see https://docs.gradle.org/4.10.3/release-notes.html
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+> Task :app:preBuild UP-TO-DATE
+> Task :CordovaLib:preBuild UP-TO-DATE
+> Task :CordovaLib:preDebugBuild UP-TO-DATE
+> Task :CordovaLib:checkDebugManifest
+> Task :CordovaLib:processDebugManifest
+> Task :app:preDebugBuild
+> Task :CordovaLib:compileDebugAidl NO-SOURCE
+> Task :app:compileDebugAidl NO-SOURCE
+> Task :CordovaLib:packageDebugRenderscript NO-SOURCE
+> Task :app:compileDebugRenderscript
+> Task :app:checkDebugManifest
+> Task :app:generateDebugBuildConfig
+> Task :app:prepareLintJar
+> Task :app:generateDebugSources
+> Task :CordovaLib:compileDebugRenderscript
+> Task :CordovaLib:generateDebugBuildConfig
+> Task :CordovaLib:generateDebugResValues
+> Task :CordovaLib:generateDebugResources
+> Task :CordovaLib:packageDebugResources
+> Task :CordovaLib:generateDebugRFile
+> Task :CordovaLib:prepareLintJar
+> Task :CordovaLib:generateDebugSources
+> Task :CordovaLib:javaPreCompileDebug
+> Task :CordovaLib:compileDebugJavaWithJavac
+> Task :CordovaLib:processDebugJavaRes NO-SOURCE
+> Task :CordovaLib:transformClassesAndResourcesWithPrepareIntermediateJarsForDebug
+> Task :app:javaPreCompileDebug
+> Task :app:mainApkListPersistenceDebug
+> Task :app:generateDebugResValues
+> Task :app:generateDebugResources
+> Task :app:mergeDebugResources
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:processDebugManifest
+> Task :app:processDebugResources
+> Task :app:compileDebugJavaWithJavac
+> Task :app:compileDebugNdk NO-SOURCE
+> Task :app:compileDebugSources
+> Task :app:mergeDebugShaders
+> Task :app:compileDebugShaders
+> Task :app:generateDebugAssets
+> Task :CordovaLib:mergeDebugShaders
+> Task :CordovaLib:compileDebugShaders
+> Task :CordovaLib:generateDebugAssets
+> Task :CordovaLib:packageDebugAssets
+> Task :app:mergeDebugAssets
+> Task :app:validateSigningDebug
+> Task :app:signingConfigWriterDebug
+> Task :app:transformClassesWithDexBuilderForDebug
+> Task :app:transformDexArchiveWithExternalLibsDexMergerForDebug
+> Task :app:transformDexArchiveWithDexMergerForDebug
+> Task :app:mergeDebugJniLibFolders
+> Task :CordovaLib:compileDebugNdk NO-SOURCE
+> Task :CordovaLib:mergeDebugJniLibFolders
+> Task :CordovaLib:transformNativeLibsWithMergeJniLibsForDebug
+> Task :CordovaLib:transformNativeLibsWithIntermediateJniLibsForDebug
+> Task :app:transformNativeLibsWithMergeJniLibsForDebug
+> Task :app:processDebugJavaRes NO-SOURCE
+> Task :app:transformResourcesWithMergeJavaResForDebug
+> Task :app:packageDebug
+> Task :app:assembleDebug
+> Task :app:cdvBuildDebug
+
+BUILD SUCCESSFUL in 1m 52s
+42 actionable tasks: 42 executed
+Built the following apk(s):
+        C:\Users\malbanese\OneDrive - Federation University Australia\Documents\GitHub\CampusWayfindingApp\cwa\platforms\android\app\build\outputs\apk\debug\app-debug.apk
+CordovaError: Promise rejected with non-error: 'xcodebuild was not found. Please install version 9.0.0 or greater from App Store'
+    at C:\Users\malbanese\AppData\Roaming\npm\node_modules\cordova\bin\cordova:29:15
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)

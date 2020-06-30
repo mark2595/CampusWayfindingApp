@@ -9,6 +9,9 @@
   "installed_plugins": {
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "au.edu.federation"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "au.edu.federation"
     }
   },
   "dependent_plugins": {}
