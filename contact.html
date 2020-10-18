@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Campus Wayfinding App</title>
+      
+   
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style_all.css">
+    <link rel="stylesheet" href="css/responsive.css"> </head>
+
+<body>
+    <div class="wrapper">
+        
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <div class="navbar-brand">
+                    <a href="index.html"><img src="federation_square.ico"></a>
+                </div>
+            </div>
+            <ul class="list-unstyled components">
+                <li> <a href="map_mthelen.html"><i class="fa fa-university" aria-hidden="true"></i> Map</a> </li>
+                <li> <a href="about_us.html"><i class="fa fa-cogs" aria-hidden="true"></i> About us</a> </li>
+                <li> <a href="my_timetable.html"><i class="fa fa-graduation-cap" aria-hidden="true"></i> My Timetable</a> </li>
+                <li> <a href="contact.html"><i class="fa fa-paper-plane" aria-hidden="true"></i> Contact</a> </li>
+            </ul>
+        </nav>
+
+        <div id="content">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" id="sidebarCollapse" class="navbar-btn"> <span></span> <span></span> <span></span> </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="contact-part">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="con-part">
+                                    
+                                        <div class="icon"> <i class="fa fa-phone-square" aria-hidden="true"></i> </div>
+                                        <div class="phone-details">
+                                        <h4>General enquiries</h4>
+                                        <p>Monday - Friday 9.00 am - 5.00 pm</p>
+                                        <p>1800 333 864</p>
+                                        
+                                        <a href="inquire.html">
+                                        <button type="button" class="btn btn-success">Submit an online enquiry</button>
+                                        </a>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="con-part">
+                                    
+                                        <div class="icon"> <i class="fa fa-phone-square" aria-hidden="true"></i> </div>
+                                        <div class="phone-details">
+                                        <h4>Program and course enquiries</h4>
+                                        <p>Monday - Friday 9.00 am - 5.00 pm</p>
+                                        <p>1800 333 864</p>
+                                        <a href="https://study.federation.edu.au/?_ga=2.55787179.1899385515.1602910723-2033282307.1575781627">
+                                            <button type="button" class="btn btn-success">Search or browse our programs and courses</button>
+                                        </a>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="con-part">
+                                    <div class="icon"> <i class="fa fa-phone-square" aria-hidden="true"></i> </div>
+                                    <div class="phone-details">
+                                        <h4>International student contacts</h4>
+                                        <p>+61 3 5327 9018</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="con-part">
+                                    <div class="icon"> <i class="fa fa-phone-square" aria-hidden="true"></i> </div>
+                                    <div class="phone-details">
+                                        <h4>Emergency and security</h4>
+                                        <p>For life-threatening events on campus call:</p>
+                                        <p>Ballarat, Berwick and Gippsland campuses: 1800 333 732</p>
+                                        <p>Wimmera Campus: 000</p>
+                                        <p>For non-emergency situations, refer to the Emergency and security webpage</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
