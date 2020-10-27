@@ -70,7 +70,35 @@ function init() {
         tilt:0,
         streetViewControl: false,
         center: new google.maps.LatLng(-37.626044, 143.891659),
-        zoom: 18
+        zoom: 18,
+        maxZoom: 20,
+        minZoom: 18,
+        styles: [
+      {
+        "featureType": "administrative.land_parcel",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape.man_made",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      }
+    ]
     };
     map = new google.maps.Map(document.getElementById("map"), opts);
     map.setMapTypeId('terrain');
