@@ -1,0 +1,16 @@
+{
+  "appId": "com.example.app",
+  "appName": "au.edu.federation",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+    "windowsAndroidStudioPath": "C:\\android-studio\\bin\\studio64.exe",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {
+    "preferences": {}
+  }
+}

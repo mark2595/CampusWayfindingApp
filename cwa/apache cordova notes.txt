@@ -138,3 +138,31 @@ Built the following apk(s):
 CordovaError: Promise rejected with non-error: 'xcodebuild was not found. Please install version 9.0.0 or greater from App Store'
     at C:\Users\malbanese\AppData\Roaming\npm\node_modules\cordova\bin\cordova:29:15
     at processTicksAndRejections (internal/process/task_queues.js:97:5)
+
+au.edu.federation
+CampusWayfindingApp
+
+C:\Users\malbanese\OneDrive - Federation University Australia\Documents\GitHub\CWACapacitorJS
+
+mpm install @capacitor/cli @capacitor/core
+
+npx cap init CampusWayfindingApp au.edu.federation
+
+npx cap add android
+
+npx cap open android
+
+npx cap run build
+
+ionci build
+
+npm install @capacitor/cli @capacitor/core
+
+npm audit
+
+npx cap init
+
+
+C:\android-studio\bin
+
+windowsAndroidStudioPath: "C:\\Program Files\\Android\\Android Studio\\bin\\studio64.exe"
