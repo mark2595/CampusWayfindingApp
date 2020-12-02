@@ -119,6 +119,129 @@ const createMap = ({ lat, lng }) => {
     const marker = createMarker({ map, position: initialPosition });
     const $info = document.getElementById('info');
   
+    const iconBase =
+          "https://developers.google.com/maps/documentation/javascript/examples/full/images/";
+        const icons = {
+          parking: {
+            icon: iconBase + "parking_lot_maps.png",
+          },
+          library: {
+            icon: iconBase + "library_maps.png",
+          },
+          
+        };
+        const features = [
+        {  
+            position: new google.maps.LatLng(-37.564976, 143.856043),
+            type: "parking",
+          },
+          { 
+            position: new google.maps.LatLng(-37.565497, 143.855959),
+            type: "parking",
+          },
+          { 
+            position: new google.maps.LatLng(-37.565924, 143.856107),
+            type: "parking",
+          },
+          { 
+            position: new google.maps.LatLng(-37.56613100019493, 143.85740069270437),
+            type: "library",
+          },
+          { 
+            position: new google.maps.LatLng(-37.567427, 143.856790),
+            type: "parking",
+          },
+          { 
+            position: new google.maps.LatLng(-38.312817, 146.430293),
+            type: "parking",
+          },
+          { 
+            position: new google.maps.LatLng(-38.310742, 146.429483),
+            type: "library",
+          },
+          { 
+            position: new google.maps.LatLng(-38.309751, 146.429559),
+            type: "parking",
+          },
+          {
+            position: new google.maps.LatLng(-33.9179, 151.23463),
+            type: "info",
+          },
+          {
+            position: new google.maps.LatLng(-33.91666, 151.23468),
+            type: "info",
+          },
+          {
+            position: new google.maps.LatLng(-33.916988, 151.23364),
+            type: "info",
+          },
+          {
+            position: new google.maps.LatLng(
+              -33.91662347903106,
+              151.22879464019775
+            ),
+            type: "parking",
+          },
+          {
+            position: new google.maps.LatLng(
+              -33.916365282092855,
+              151.22937399734496
+            ),
+            type: "parking",
+          },
+          {
+            position: new google.maps.LatLng(
+              -33.91665018901448,
+              151.2282474695587
+            ),
+            type: "parking",
+          },
+          {
+            position: new google.maps.LatLng(
+              -33.919543720969806,
+              151.23112279762267
+            ),
+            type: "parking",
+          },
+          {
+            position: new google.maps.LatLng(
+              -33.91608037421864,
+              151.23288232673644
+            ),
+            type: "parking",
+          },
+          {
+            position: new google.maps.LatLng(
+              -33.91851096391805,
+              151.2344058214569
+            ),
+            type: "parking",
+          },
+          {
+            position: new google.maps.LatLng(
+              -33.91818154739766,
+              151.2346203981781
+            ),
+            type: "parking",
+          },
+          {
+            position: new google.maps.LatLng(
+              -33.91727341958453,
+              151.23348314155578
+            ),
+            type: "library",
+          },
+        ];
+
+      
+        for (let i = 0; i < features.length; i++) {
+          const marker = new google.maps.Marker({
+            position: features[i].position,
+            icon: icons[features[i].type].icon,
+            map: map,
+          });
+        }  
+
     let watchId = trackLocation({
       onSuccess: ({ coords: { latitude: lat, longitude: lng } }) => {
         marker.setPosition({ lat, lng });
