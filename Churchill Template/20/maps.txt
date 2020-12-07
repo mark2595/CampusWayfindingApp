@@ -41,3 +41,6 @@ bottom left
 
 bootm right 
 118850 80659
+
+down is file, 
+across is folder
