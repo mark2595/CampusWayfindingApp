@@ -25,3 +25,19 @@ road test
 folder  file name
 3803131 2581043
 3803131 2581041
+
+Map at zoom level 17,
+always use google. 
+start at top left
+
+top left
+118846 80657
+
+top right
+118850 80657
+
+bottom left
+118846 80659
+
+bootm right 
+118850 80659
