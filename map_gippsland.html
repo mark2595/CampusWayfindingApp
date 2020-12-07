@@ -77,53 +77,74 @@ width: 100%; height: 100%; }
 </body>
 </html>
 <script>
+var map;
+var mapBounds = new google.maps.LatLngBounds(
+    new google.maps.LatLng(-38.313648, 146.420289),
+    new google.maps.LatLng(-38.309334, 146.434024));
+var mapMinZoom = 11;
+var mapMaxZoom = 28;
+var maptiler = new google.maps.ImageMapType({
+    getTileUrl: function(coord, zoom) { 
+        var proj = map.getProjection(); 
+        var z2 = Math.pow(2, zoom);
+        var tileXSize = 256 / z2;
+        var tileYSize = 256 / z2;
+        var tileBounds = new google.maps.LatLngBounds(
+            proj.fromPointToLatLng(new google.maps.Point(coord.x * tileXSize, (coord.y + 1) * tileYSize)),
+            proj.fromPointToLatLng(new google.maps.Point((coord.x + 1) * tileXSize, coord.y * tileYSize))
+        );
+        var x = coord.x >= 0 ? coord.x : z2 + coord.x
+        var y = coord.y;
+        if (mapBounds.intersects(tileBounds) && (mapMinZoom <= zoom) && (zoom <= mapMaxZoom))
+            return zoom + "/" + x + "/" + y + ".png";
+        else
+            return "https://www.maptiler.com/img/none.png";
+    },
+    tileSize: new google.maps.Size(256, 256),
+    isPng: true,
+    name: "Rendered with MapTiler Desktop <https://www.maptiler.com/desktop/>",
+    alt: "Rendered with MapTiler Desktop",
 
-const createMap = ({ lat, lng }) => {
-    return new google.maps.Map(document.getElementById('map'), {
-      center: { lat, lng },
-      zoom: 18
-    });
-  };
-  
- 
-  const createMarker = ({ map, position }) => {
-    return new google.maps.Marker({ map, position });
-  };
-  
-
-  const trackLocation = ({ onSuccess, onError = () => { } }) => {
-    if ('geolocation' in navigator === false) {
-      return onError(new Error('Geolocation is not supported by your browser.'));
-    }
-  
-    return navigator.geolocation.watchPosition(onSuccess, onError, {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
-    });
-  };
-  
- 
-  const getPositionErrorMessage = code => {
-    switch (code) {
-      case 1:
-        return 'Permission denied.';
-      case 2:
-        return 'Position unavailable.';
-      case 3:
-        return 'Timeout reached.';
-    }
-  }
-  
-  /**
-   * Initialize the application.
-   * Automatically called by the google maps API once it's loaded.
-  */
-  function init() {
-    const initialPosition = { lat: -38.311211, lng: 146.429409 }; 
-    const map = createMap(initialPosition);
-    const marker = createMarker({ map, position: initialPosition });
-    const $info = document.getElementById('info');
+    opacity: 1.0
+});
+function init() {
+    var opts = {
+        tilt:0,
+        streetViewControl: false,
+        center: new google.maps.LatLng(-38.311491, 146.428526),
+        zoom: 17,
+        maxZoom: 28,
+        minZoom: 11,
+        styles: [
+      {
+        "featureType": "administrative.land_parcel",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape.man_made",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      }
+    ]
+    };
+    map = new google.maps.Map(document.getElementById("map"), opts);
+    map.setMapTypeId('terrain');
+    map.overlayMapTypes.insertAt(0, maptiler);
   
     const iconBase =
           "https://developers.google.com/maps/documentation/javascript/examples/full/images/";
@@ -296,7 +317,7 @@ const createMap = ({ lat, lng }) => {
           });
         }  
 
-    let watchId = trackLocation({
+/*    let watchId = trackLocation({
       onSuccess: ({ coords: { latitude: lat, longitude: lng } }) => {
         marker.setPosition({ lat, lng });
         map.panTo({ lat, lng });
@@ -308,6 +329,6 @@ const createMap = ({ lat, lng }) => {
         $info.textContent = `Error: ${err.message || getPositionErrorMessage(err.code)}`;
         $info.classList.add('error');
       }
-    });
-  }
+    }); */
+}
 </script>
