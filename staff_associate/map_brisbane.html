@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Campus Wayfinding App</title>
+     
+    <link rel="icon" href="federation_square.ico">
+    <link rel="stylesheet" href="styles.css">  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css"> </head>
+<style type="text/css">
+html { overflow: hidden; }
+body { overflow: hidden; padding: 0; margin: 0;
+width: 100%; height: 100%; }
+#map { position: absolute; top: 10px; left: 10px; right: 10px; bottom: 15px; overflow: auto; }
+@media screen and (max-width: 600px) {
+  #map { top:0px; left:0px; width:100%; height:100%;}
+}
+</style>
+<script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/index.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
+    
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyCOsCqtodz3WNgADiBK14MGWGx-oNCmA7M&sensor=false"></script>
+
+</head>
+<body onload="init()">
+    <div class="wrapper">
+        
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <div class="navbar-brand">
+                    <a href="index.html"><img src="federation_square.ico"></a>
+                </div> </div>
+              <ul class="list-unstyled components">
+                <li> <a href="map_brisbane.html"><i class="fa fa-university" aria-hidden="true"></i> Map</a> </li>
+                <li> <a href="about_us_brisbane.html"><i class="fa fa-info-circle" aria-hidden="true"></i> About us</a> </li>
+                <li> <a href="my_timetable_brisbane.html"><i class="fa fa-graduation-cap" aria-hidden="true"></i> My Timetable</a> </li>
+                <li> <a href="contact_brisbane.html"><i class="fa fa-paper-plane" aria-hidden="true"></i> Contact</a> </li>
+                <li> <a href="student_services_brisbane.html"><i class="fa fa-handshake-o" aria-hidden="true"></i> Student Services</a> </li>
+            </ul>
+        </nav>
+        
+        <div id="content">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" id="sidebarCollapse" class="navbar-btn"> <span></span> <span></span> <span></span> </button>
+                    </div>
+                </div>
+            </nav>
+            
+            <main class="container">
+                <div id="map" class="map"></div>
+                 
+            </main>
+                    
+        </div>
+    </div>
+
+</body>
+</html>
+<script>
+
+const createMap = ({ lat, lng }) => {
+    return new google.maps.Map(document.getElementById('map'), {
+      center: { lat, lng },
+      zoom: 18
+    });
+  };
+  
+ 
+  const createMarker = ({ map, position }) => {
+    return new google.maps.Marker({ map, position });
+  };
+  
+
+  const trackLocation = ({ onSuccess, onError = () => { } }) => {
+    if ('geolocation' in navigator === false) {
+      return onError(new Error('Geolocation is not supported by your browser.'));
+    }
+  
+    return navigator.geolocation.watchPosition(onSuccess, onError, {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    });
+  };
+  
+ 
+  const getPositionErrorMessage = code => {
+    switch (code) {
+      case 1:
+        return 'Permission denied.';
+      case 2:
+        return 'Position unavailable.';
+      case 3:
+        return 'Timeout reached.';
+    }
+  }
+  
+  /**
+   * Initialize the application.
+   * Automatically called by the google maps API once it's loaded.
+  */
+  function init() {
+    const initialPosition = { lat: -27.464929, lng: 153.028383 }; 
+    const map = createMap(initialPosition);
+    const marker = createMarker({ map, position: initialPosition });
+    const $info = document.getElementById('info');
+  
+    const iconBase =
+          "https://developers.google.com/maps/documentation/javascript/examples/full/images/";
+        const icons = {
+          parking: {
+            icon: iconBase + "parking_lot_maps.png",
+          },
+          library: {
+            icon: iconBase + "library_maps.png",
+          },
+          bike: {
+            icon: iconBase + "bike256.png",
+          },
+          bus: {
+            icon: iconBase + "bus256.png",
+          },
+          disabledAccess: {
+            icon: iconBase + "db256.png",
+          },
+          fountain: {
+            icon: iconBase + "df256.png",
+          },
+          firstAid: {
+            icon: iconBase + "fa256.png",
+          },
+          extinguisher: {
+            icon: iconBase + "fe256.png",
+          },
+          food: {
+            icon: iconBase + "foodndrink256.png",
+          },
+          lift: {
+            icon: iconBase + "lift256.png",
+          },
+          bathroom: {
+            icon: iconBase + "mb256.png",
+          },
+          printer: {
+            icon: iconBase + "p256.png",
+          },
+          parentRoom: {
+            icon: iconBase + "parent256.png",
+          },
+          prayerRoom: {
+            icon: iconBase + "prayer256.png",
+          },
+          muslimPrayerRoom: {
+            icon: iconBase + "prayer2256.png",
+          },
+          studenthq: {
+            icon: iconBase + "studenthq256.png",
+          },
+        };
+        const features = [
+        {  
+            position: new google.maps.LatLng(-27.464739, 153.028269),
+            type: "parking",
+          },
+          { 
+            position: new google.maps.LatLng(-27.465032,  153.028217),
+            type: "parking",
+          },
+          { 
+            position: new google.maps.LatLng(-27.464894600849917, 153.02839229802345),
+            type: "library",
+          },
+          { 
+            position: new google.maps.LatLng(12345678, 12345678),
+            type: "bike",
+          },
+          { 
+            position: new google.maps.LatLng(12345678, 12345678),
+            type: "bus",
+          },
+          {
+            position: new google.maps.LatLng(12345678, 12345678),
+            type: "disabledAccess",
+          },
+          {
+            position: new google.maps.LatLng(12345678, 12345678),
+            type: "fountain",
+          },
+          {
+            position: new google.maps.LatLng(12345678, 12345678),
+            type: "firstAid",
+          },
+          {
+            position: new google.maps.LatLng(
+              12345678, 12345678
+            ),
+            type: "extinguisher",
+          },
+          {
+            position: new google.maps.LatLng(
+              12345678, 12345678
+            ),
+            type: "food",
+          },
+          {
+            position: new google.maps.LatLng(
+              12345678, 12345678
+            ),
+            type: "lift",
+          },
+          {
+            position: new google.maps.LatLng(
+              12345678, 123456787
+            ),
+            type: "bathroom",
+          },
+          {
+            position: new google.maps.LatLng(
+              12345678, 12345678
+            ),
+            type: "printer",
+          },
+          {
+            position: new google.maps.LatLng(
+              12345678, 12345678
+            ),
+            type: "parentRoom",
+          },
+          {
+            position: new google.maps.LatLng(
+              12345678, 12345678
+            ),
+            type: "prayerRoom",
+          },
+          {
+            position: new google.maps.LatLng(
+              12345678, 12345678
+            ),
+            type: "muslimPrayerRoom",
+          },
+          {
+            position: new google.maps.LatLng(
+              12345678, 12345678
+            ),
+            type: "studenthq",
+          },
+        ];
+
+      
+        for (let i = 0; i < features.length; i++) {
+          const marker = new google.maps.Marker({
+            position: features[i].position,
+            icon: icons[features[i].type].icon,
+            map: map,
+          });
+        }
+
+    let watchId = trackLocation({
+      onSuccess: ({ coords: { latitude: lat, longitude: lng } }) => {
+        marker.setPosition({ lat, lng });
+        map.panTo({ lat, lng });
+        $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
+        $info.classList.remove('error');
+      },
+      onError: err => {
+        console.log($info);
+        $info.textContent = `Error: ${err.message || getPositionErrorMessage(err.code)}`;
+        $info.classList.add('error');
+      }
+    });
+  }
+</script>

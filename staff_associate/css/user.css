@@ -1,0 +1,50 @@
+/*typed js*/
+.sortcut.text-center {
+    margin-top: 10px;
+    margin-left: 570px;
+    
+}
+.header-typed {
+    margin-top: 180px;
+    text-align: left;
+    margin-left: 5%;
+}
+.header-typed h1{
+    color: #fff;
+}
+.header-typed h4{
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-top: 30px;
+}
+
+
+.header-typed a{
+    color: #051445;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+}
+.top-button{
+    background-color: #051445;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    margin-top: 16px;
+    border-radius: 20px;
+    color: #fff;
+    transform: scale(1);
+    transition: .5s;
+    margin-left: 10px;
+}
+.top-button:hover{
+    background-color: #47B375;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    margin-top: 16px;
+    border-radius: 20px;
+    color: #fff;
+    transform: scale(1.1);
+    transition: .5s;
+}

@@ -1,0 +1,13 @@
+{
+  "name": "road test",
+  "version": "1.1.0",
+  "description": "",
+  "attribution": "Rendered with <a href=\"https://www.maptiler.com/desktop/\">MapTiler Desktop</a>",
+  "type": "overlay",
+  "format": "png",
+  "minzoom": "20",
+  "maxzoom": "22",
+  "scale": "1.000000",
+  "bounds": [146.42519531, -38.31067334, 146.42540989, -38.31050497],
+  "profile": "mercator"
+}
