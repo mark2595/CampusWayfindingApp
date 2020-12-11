@@ -52,9 +52,10 @@
 ' Usage: Save as "GenerateMapCutUpScript.vbs"
 '        Run this from command line using cscript.exe, eg: cscript C:\path\to\script\GenerateMapCutUpScript.vbs
 
-Set oWSH = CreateObject("WScript.Shell")
+Set objShell = wscript.createobject("wscript.shell")
 Set objStdOut = WScript.StdOut
 Set objStdIn = WScript.StdIn
+Set objFSO = Createobject("Scripting.FileSystemObject")
 
 Select Case WScript.Arguments.Count
 Case 0
@@ -99,3 +100,12 @@ Case Else
 	    yStart = WScript.Arguments(3)
 		yEnd = WScript.Arguments(4)
 End Select
+
+Set File = objFSO.CreateTextFile(objShell.CurrentDirectory & "\" & zoomLevel & "\" & "CutImageUp" & zoomLevel & ".bat",True)
+File.Write "@echo off"
+File.Write "set filepath=%cd%"
+File.Write "cd ../../"
+File.Write "echo %filepath%"
+File.Write "echo %cd%"
+File.Write "mkdir ""17"
+File.Close
