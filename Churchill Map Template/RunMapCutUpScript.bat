@@ -18,7 +18,7 @@ mkdir "28"
 rem IF EXIST "A:\masm32\bin\ml.exe" (set masmpath=A:\masm32)
 
 rem top left zoomlevel xstart xend, ystart yend
-cscript %filepath%\GenerateMapCutUpScript.vbs 20 950770 950808 645254 645282
+cscript.exe "%filepath%\GenerateMapCutUpScript.vbs" 20 950770 950808 645254 645282
 
 pause
 

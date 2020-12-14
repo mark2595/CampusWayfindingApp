@@ -102,10 +102,34 @@ Case Else
 End Select
 
 Set File = objFSO.CreateTextFile(objShell.CurrentDirectory & "\" & zoomLevel & "\" & "CutImageUp" & zoomLevel & ".bat",True)
-File.Write "@echo off"
-File.Write "set filepath=%cd%"
-File.Write "cd ../../"
-File.Write "echo %filepath%"
-File.Write "echo %cd%"
-File.Write "mkdir ""17"
+File.Write "@echo off" & vbCrLf 
+File.Write "set filepath=%cd%" & vbCrLf
+File.Write "cd ../../" & vbCrLf
+File.Write "echo %filepath%" & vbCrLf
+File.Write "echo %cd%" & vbCrLf
+File.Write "mkdir """ & zoomLevel & """" & vbCrLf
+
+For i=xEnd To xStart Step -1
+    objStdOut.WriteLine i
+	File.Write "mkdir """ & zoomLevel & "\" & i & """" & vbCrLf
+Next
+
+xCutAxis=0
+yCutAxis=0
+For i=yEnd To yStart Step -1
+	File.Write vbCrLf
+	xCutAxis=0
+	For k=xEnd To xStart Step -1
+		File.Write "%cd%\tools\ImageMagick\convert -extract 256x256+" & xCutAxis & "+" & yCutAxis & " ""%filepath%\" & zoomLevel & ".png"" " & i & ".png" & vbCrLf
+		File.Write "move " & i & ".png " & zoomLevel & "\" & k & "\" & i  & ".png" & vbCrLf
+		xCutAxis=xCutAxis+256
+	Next
+	yCutAxis=yCutAxis+256
+Next 
+
+'File.Write "%cd%\tools\ImageMagick\convert -extract 256x256+" & xCutAxis & "+" & yCutAxis & "%filepath%\" & zoomLevel & ".png" & yStart & ".png"
+'File.Write "move " & yStart & ".png " & zoomLevel & "\" & xStart & "\" & yStart  & ".png"
+'%cd%\tools\ImageMagick\convert -extract 256x256+0+0 "%filepath%\17.png" 80657.png
+'move 80657.png 17\118846\80657.png
+
 File.Close
