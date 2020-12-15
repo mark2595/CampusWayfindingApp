@@ -22,6 +22,8 @@ cscript.exe "%filepath%\GenerateMapCutUpScript.vbs" 18 237693 237700 161314 1613
 cscript.exe "%filepath%\GenerateMapCutUpScript.vbs" 19 475387 475402 322628 322637
 cscript.exe "%filepath%\GenerateMapCutUpScript.vbs" 20 950770 950808 645254 645282
 
+
+cscript.exe "%filepath%\GenerateMapCutUpScript.vbs" 25 30424856 30424877 20648392 20648402
 pause
 
 
