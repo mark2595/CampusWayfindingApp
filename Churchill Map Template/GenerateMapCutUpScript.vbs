@@ -116,12 +116,16 @@ Next
 
 xCutAxis=0
 yCutAxis=0
-For i=yEnd To yStart Step -1
+For i=yStart To yEnd Step +1
+'For i=yEnd To yStart Step -1
 	File.Write vbCrLf
 	xCutAxis=0
-	For k=xEnd To xStart Step -1
+	'For k=xEnd To xStart Step -1
+	For k=xStart To xEnd Step +1
+	    objStdOut.WriteLine i & "\" & k
 		File.Write "%cd%\tools\ImageMagick\convert -extract 256x256+" & xCutAxis & "+" & yCutAxis & " ""%filepath%\" & zoomLevel & ".png"" " & i & ".png" & vbCrLf
 		File.Write "move " & i & ".png " & zoomLevel & "\" & k & "\" & i  & ".png" & vbCrLf
+		File.Write "echo " & i & "\" & k & " out of " & xEnd & "\" & yEnd & vbCrLf
 		xCutAxis=xCutAxis+256
 	Next
 	yCutAxis=yCutAxis+256
